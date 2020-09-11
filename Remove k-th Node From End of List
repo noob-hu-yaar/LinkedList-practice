@@ -1,0 +1,42 @@
+/*Remove k-th Node From End of List*/
+ 
+
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int k) 
+    {
+        ListNode *hare = head, *tort = head;
+        
+        for(int i=0;i<k;i++)
+            {
+                if(hare->next == NULL)
+                {
+                    if(i == k-1)
+                    {
+                        head = head->next;
+                        return head;
+                    }
+                }
+                hare = hare->next;
+            }
+        
+        while(hare->next != NULL)
+        {
+            hare = hare->next;
+            tort = tort->next;
+        }
+        
+        tort->next = tort->next->next;
+        
+    return head;
+    }
+};
