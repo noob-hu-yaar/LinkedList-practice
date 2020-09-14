@@ -1,0 +1,14 @@
+/* Check circular linkedlist or not */
+
+bool IsCircular (ListNode *head)
+{
+    if(head == NULL)
+        return true;
+
+    ListNode *node = head->next;
+
+    while(node!=NULL && node!=head)
+        node = node->next;
+
+    return (node == head);
+}
